@@ -1,6 +1,3 @@
 remote_theme: pages-themes/primer
 plugins:
   - jekyll-remote-theme
-title: John Doe
-description: Senior Software Engineer specializing in AI/ML and Cybersecurity
-show_downloads: false
