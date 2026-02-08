@@ -1,54 +1,442 @@
----
-layout: default
----
-
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
+    <title>Ekaterina Shemetova | Personal Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --light-color: #f8f9fa;
+            --gray-light: #e9ecef;
+            --gray-medium: #6c757d;
+            --gray-dark: #495057;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-dark);
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0 30px;
+            border-bottom: 1px solid var(--gray-light);
+            margin-bottom: 40px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            color: var(--accent-color);
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-light);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            color: var(--gray-medium);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .work-item, .education-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid var(--gray-light);
+            transition: var(--transition);
+        }
+
+        .work-item:hover, .education-item:hover {
+            border-left-color: var(--accent-color);
+        }
+
+        .work-period, .education-period {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style-type: none;
+        }
+
+        .interest-item {
+            background-color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+        }
+
+        .interest-item:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .publication-list, .course-list, .project-list {
+            list-style-type: none;
+        }
+
+        .publication-item, .course-item, .project-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray-light);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .publication-item:last-child, .course-item:last-child, .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-item::before, .course-item::before, .project-item::before {
+            content: "•";
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 15px;
+        }
+
+        .publication-authors {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .publication-venue {
+            font-style: italic;
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--gray-light);
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px 0;
+            }
+
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .profile-photo {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header class="hero">
-            <img src="https://via.placeholder.com/200x200/4ecdc4/ffffff?text=Фото" alt="Ваше фото" class="avatar">
-            <h1>АААААА</h1>
-            <p class="subtitle">IT-специалист · AI/ML · Cybersecurity</p>
-            <a href="https://github.com/вашеимя" class="btn">GitHub</a>
-        </header>
+    <header>
+        <div class="profile-container">
+            <img src="https://avatars.githubusercontent.com/u/31743249?s=400&u=9125b12e24053be622d819e8d2d36d29af29ba46&v=4" alt="John Smith" class="profile-photo">
+            <div class="profile-info">
+                <h1>Ekaterina Shemetova</h1>
+                <p class="title">Code Analysis & CS Researcher</p>
+                <p>Integrating formal methods with AI/ML for automated code analysis, vulnerabilities/bugs detection and repair. Passionate about theoretical computer science (especially formal languages) and teaching.</p>
+                <div class="contact-info">
+                    <a href="" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>katyacyfra at gmail.com</span>
+                    </a>
+                    <a href="https://github.com/katyacyfra" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>github.com/katyacyfra</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <section class="skills">
-            <h2>Навыки</h2>
-            <ul>
-                <li>Python, Transformers, LlamaIndex</li>
-                <li>Machine Learning, Embeddings</li>
+    <main>
+        <section class="work-experience">
+            <h2>Work Experience</h2>
+
+            <div class="work-item">
+                <h3>Researcher at R&D Toolchain Department</h3>
+                <p class="section-subtitle">Chebyshev Research Center</p>
+                <p class="work-period">May 2022 – Present</p>
+                <p>AI and ML for code.</p>
+            </div>
+
+            <div class="work-item">
+                <h3>Teaching Assistant</h3>
+                <p class="section-subtitle">Faculty of Mathemathics and Computer Sciences, St. Petersburg State University + HSE </p>
+                <p class="work-period">September 2022 – Present</p>
+                <p>Teaching assistant in Discrete Mathematics, Theoretical Computer Science at SPbSU.
+                    Course instructor and lecturer in Formal Languages (HSE: 2024, 2025), Code Analysis & Secure Software Development (SPbSU:2023), Dynamic Graph Algorithms (SPbSU:2021, 2022).</p>
+            </div>
+
+            <div class="work-item">
+                <h3>Researcher at <a href="https://lp.jetbrains.com/research/plt_lab/" class="contact-item">Programming Languages and Tools Lab
+                    </a></h3>
+                <p class="section-subtitle">JetBrains</p>
+                <p class="work-period">September 2018 – May 2022</p>
+                <p>Formal languages constrained path problems: theory and practical applications in graph databases, Datalog and code analysis (CFL-reachability).</p>
+            </div>
+        </section>
+
+        <section class="education">
+            <h2>Education</h2>
+
+            <div class="education-item">
+                <h3>Postgraduate Studies in Theoretical Сomputer Science</h3>
+                <p class="section-subtitle">Academic University, St. Petersburg</p>
+                <p class="education-period">2019 – 2023</p>
+            </div>
+
+            <div class="education-item">
+                <h3>MSc in Applied Mathematics & Computer Science</h3>
+                <p class="section-subtitle">ITMO University, St. Petersburg</p>
+                <p class="education-period">2017 – 2019</p>
+            </div>
+
+        </section>
+
+        <section class="interests">
+            <h2>Research Interests</h2>
+            <ul class="interests-list">
+                <li class="interest-item">AI for Vulnerability Detection/Repair</li>
+                <li class="interest-item">Formal Languages</li>
+                <li class="interest-item">Application Security (AppSec)</li>
+                <li class="interest-item">Graph Neural Networks</li>
+                <li class="interest-item">SAST/DAST/SCA</li>
+                <li class="interest-item">Graph applications in code analysis</li>
+                <li class="interest-item">Fine-Grained Complexity</li>
+                <li class="interest-item">AI for code analysis</li>
             </ul>
         </section>
 
-        <section class="projects">
-            <h2>Current Positions</h2>
-            <div class="project">
-                <h3>AAAA</h3>
-                <p>AAAAAAAA</p>
-            </div>
+        <section class="publications">
+            <h2>Selected Publications</h2>
+            <ul class="publication-list">
+                <li class="publication-item">
+                    <h3>LAMeD: LLM-generated Annotations for Memory Leak Detection</h3>
+                    <p class="publication-authors">Ekaterina Shemetova, Ivan Smirnov, Anton Alekseev, Ilya Shenbin, Alexey Rukhovich, Sergey Nikolenko, Vadim Lomshakov, Irina Piontkovskaya</p>
+                    <p class="publication-venue">29th International Conference on Evaluation and Assessment in Software Engineering (EASE), 2025</p>
+                </li>
+                <li class="publication-item">
+                    <h3>PySymGym: An Infrastructure to Train AI-Powered Navigation Assistant for Symbolic Execution Engine</h3>
+                    <p class="publication-authors">Semyon Grigorev, Anna Chistyakova, Maxim Nigmatulin, Ekaterina Shemetova, Danil Parfenov, David Akhmedov</p>
+                    <p class="publication-venue">IEEE/ACM 1st International Workshop on Advancing Static Analysis for Researchers and Industry Practitioners in Software Engineering (STATIC), 2025</p>
+                </li>
+                <li class="publication-item">
+                    <h3>Rational Index of Languages Defined by Grammars with Bounded Dimension of Parse Trees</h3>
+                    <p class="publication-authors">Ekaterina Shemetova, Alexander Okhotin, Semyon Grigorev</p>
+                    <p class="publication-venue">Theory of Computing Systems 68, 487–511, 2024</p>
+                </li>
+                <li class="publication-item">
+                    <h3>One Algorithm to Evaluate Them All: Unified Linear Algebra Based Approach to Evaluate Both Regular and Context-Free Path Queries</h3>
+                    <p class="publication-authors">Ekaterina Shemetova, Rustam Azimov, Egor Orachev, Ilya Epelbaum, Semyon Grigorev</p>
+                    <p class="publication-venue">10.48550/arXiv.2103.14688, 2021</p>
+                </li>
+            </ul>
         </section>
 
-        
-        <section class="projects">
-            <h2>Past Positions</h2>
-            <div class="project">
-                <h3>AAAA</h3>
-                <p>AAAAAAAA</p>
-            </div>
+        <section class="advising">
+            <h2>(Co-)Advised Student Projects</h2>
+            <ul class="project-list">
+                <li class="project-item">
+                    <h3>Improving the accuracy of "dirty file" detection during incremental compilation in Kotlin</h3>
+                    <p class="section-subtitle">Coursework - Leonid Ternopol (2024), SPbSU, VK Education Special Prize Award</p>
+                </li>
+                <li class="project-item">
+                    <h3>Compact Abstract Graphs for detecting Java code vulnerabilities with GNN Models</h3>
+                    <p class="section-subtitle">Coursework - Arkady Andreev (2023), SPbSU, VK Education Special Prize Award</p>
+                </li>
+                <li class="project-item">
+                    <h3>Fine-grained reductions around CFL-reachability</h3>
+                    <p class="section-subtitle">Master's Thesis - Aleksandra Istomina (2023), SPbSU, co-advised with Semyon Grigorev</p>
+                </li>
+                <li class="project-item">
+                    <h3>Integrating taint analysis into the generation of unit tests for software security</h3>
+                    <p class="section-subtitle">Bachelor's Thesis - Olesya Subbotina (2023), HSE</p>
+                </li>
+            </ul>
         </section>
+    </main>
 
-        <section class="contacts">
-            <h2>Контакты</h2>
-            <p>📧 email@example.com</p>
-            <p>📍 Санкт-Петербург, Россия</p>
-        </section>
-    </div>
+    <footer>
+        <p>© 2026 Ekaterina Shemetova. Last updated: February 2026.</p>
+        <p>This page is hosted on GitHub Pages.</p>
+    </footer>
+
+    <script>
+        // Add subtle animation to section headers when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+
+            // Add hover effect to work and education items
+            const workItems = document.querySelectorAll('.work-item, .education-item');
+            workItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(5px)';
+                });
+
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
